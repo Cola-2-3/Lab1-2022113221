@@ -365,3 +365,7 @@ int main() {
         }
     }
 }
+
+void debug() {
+    printf("Debug message from VS Code\n");
+}
