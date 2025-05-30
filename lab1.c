@@ -289,82 +289,82 @@ char* randomWalk() {
     return result;
 }
 
-int main() {
-    int choice;
-    char fileName[256];
+// int main() {
+//     int choice;
+//     char fileName[256];
 
-    // 提示用户输入 1 或 2
-    printf("Enter 1 for 'Easy Test.txt' or 2 for 'Cursed Be The Treasure.txt': ");
-    if (scanf("%d", &choice) != 1) {
-        printf("Invalid input. Please enter a number.\n");
-        return 1;
-    }
+//     // 提示用户输入 1 或 2
+//     printf("Enter 1 for 'Easy Test.txt' or 2 for 'Cursed Be The Treasure.txt': ");
+//     if (scanf("%d", &choice) != 1) {
+//         printf("Invalid input. Please enter a number.\n");
+//         return 1;
+//     }
 
-    // 根据输入选择文件名
-    if (choice == 1) {
-        strcpy(fileName, "Easy Test.txt");
-    } else if (choice == 2) {
-        strcpy(fileName, "Cursed Be The Treasure.txt");
-    } else {
-        printf("Invalid choice. Please enter 1 or 2.\n");
-        return 1;
-    }
+//     // 根据输入选择文件名
+//     if (choice == 1) {
+//         strcpy(fileName, "Easy Test.txt");
+//     } else if (choice == 2) {
+//         strcpy(fileName, "Cursed Be The Treasure.txt");
+//     } else {
+//         printf("Invalid choice. Please enter 1 or 2.\n");
+//         return 1;
+//     }
 
-    // 打开文件
-    FILE* f = fopen(fileName, "r");
-    if (!f) {
-        printf("File not found: %s\n", fileName);
-        return 1;
-    }
+//     // 打开文件
+//     FILE* f = fopen(fileName, "r");
+//     if (!f) {
+//         printf("File not found: %s\n", fileName);
+//         return 1;
+//     }
 
-    // 读取文件内容
-    char text[MAX_TEXT_LEN];
-    size_t bytesRead = fread(text, 1, MAX_TEXT_LEN - 1, f);
-    text[bytesRead] = '\0'; // 确保字符串以空字符结尾
-    fclose(f);
+//     // 读取文件内容
+//     char text[MAX_TEXT_LEN];
+//     size_t bytesRead = fread(text, 1, MAX_TEXT_LEN - 1, f);
+//     text[bytesRead] = '\0'; // 确保字符串以空字符结尾
+//     fclose(f);
 
-    // 构建图
-    buildGraph(text);
+//     // 构建图
+//     buildGraph(text);
 
-    // 主菜单循环
-    while (1) {
-        int choice;
-        char w1[MAX_LEN], w2[MAX_LEN], input[MAX_TEXT_LEN];
-        printf("\n1. Show Graph\n2. Query Bridge Words\n3. Generate New Text\n4. Shortest Path\n5. PageRank\n6. Random Walk\n0. Exit\n>> ");
-        scanf("%d", &choice);
-        getchar();
-        switch (choice) {
-            case 1:
-                showDirectedGraph();
-                break;
-            case 2:
-                printf("Enter word1 and word2: ");
-                scanf("%s %s", w1, w2);
-                printf("%s\n", queryBridgeWords(w1, w2));
-                break;
-            case 3:
-                printf("Enter text: ");
-                fgets(input, MAX_TEXT_LEN, stdin);
-                printf("Result: %s\n", generateNewText(input));
-                break;
-            case 4:
-                printf("Enter word1 and word2: ");
-                scanf("%s %s", w1, w2);
-                printf("%s\n", calcShortestPath(w1, w2));
-                break;
-            case 5:
-                printf("Enter word: ");
-                scanf("%s", w1);
-                printf("PageRank: %.4lf\n", calPageRank(w1));
-                break;
-            case 6:
-                printf("Random Walk: %s\n", randomWalk());
-                break;
-            case 0:
-                return 0;
-        }
-    }
-}
+//     // 主菜单循环
+//     while (1) {
+//         int choice;
+//         char w1[MAX_LEN], w2[MAX_LEN], input[MAX_TEXT_LEN];
+//         printf("\n1. Show Graph\n2. Query Bridge Words\n3. Generate New Text\n4. Shortest Path\n5. PageRank\n6. Random Walk\n0. Exit\n>> ");
+//         scanf("%d", &choice);
+//         getchar();
+//         switch (choice) {
+//             case 1:
+//                 showDirectedGraph();
+//                 break;
+//             case 2:
+//                 printf("Enter word1 and word2: ");
+//                 scanf("%s %s", w1, w2);
+//                 printf("%s\n", queryBridgeWords(w1, w2));
+//                 break;
+//             case 3:
+//                 printf("Enter text: ");
+//                 fgets(input, MAX_TEXT_LEN, stdin);
+//                 printf("Result: %s\n", generateNewText(input));
+//                 break;
+//             case 4:
+//                 printf("Enter word1 and word2: ");
+//                 scanf("%s %s", w1, w2);
+//                 printf("%s\n", calcShortestPath(w1, w2));
+//                 break;
+//             case 5:
+//                 printf("Enter word: ");
+//                 scanf("%s", w1);
+//                 printf("PageRank: %.4lf\n", calPageRank(w1));
+//                 break;
+//             case 6:
+//                 printf("Random Walk: %s\n", randomWalk());
+//                 break;
+//             case 0:
+//                 return 0;
+//         }
+//     }
+// }
 
 void debug() {
     printf("Debug message from VS Code\n");
